@@ -1,11 +1,11 @@
-# Applied Data Science @ Columbia
-## Fall 2018
-## Project 1: What made you happy today?
+## What made you happy today?
 
 ![image](figs/title.jpeg)
 
 ### [Project Description](doc/)
-This is the first and only *individual* (as opposed to *team*) this semester. 
+This project aims to apply topic modeling to help us understand large text content. The text is a database recording people's happy moments which extends to tons of things that makes people feel happy. The topic comparisons are from age groups, gender, parenthood and marital, so that we could observe more information for different groups of people. Topic modeling is a great tool in this project and could extend more for research topics such as single mom's issues, divorced problems and aging phenomenon.
+
+
 
 Term: Fall 2018
 
