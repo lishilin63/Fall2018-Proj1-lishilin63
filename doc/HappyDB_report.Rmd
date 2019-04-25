@@ -1,10 +1,10 @@
 ---
 title: "HappyDB_report"
-author: "Shilin Li (sl4261)"
-date: "9/11/2018"
+author: "George"
+date: "4/25/2019"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -26,9 +26,9 @@ library(data.table) # Manipulate lists and data frames to data table
 This project mainly focuses on the exploration data analysis on the HappyDB dataset. The goal of the report is finding interesting pattern among people's happy moments. In the report, I will focus on the topic difference in people regarding gender, marital status, parenthood, and age groups. Similarities and differences in topics will be discussed.
 
 ```{r,warning=FALSE}
-hm_data <- read_csv("~/Documents/GitHub/Fall2018-Proj1-lishilin63/data/cleaned_hm.csv")
+hm_data <- fread("~/Github/Topic-Modeling_HappyDB/data/cleaned_hm.csv")
 
-demographic_data <- read_csv("~/Documents/GitHub/Fall2018-Proj1-lishilin63/data/demographic.csv")
+demographic_data <- fread("~/Github/Topic-Modeling_HappyDB/data/demographic.csv")
 ```
 
 ### Preliminary Cleanning hm_data Text
@@ -38,7 +38,7 @@ The new hm_data has two new columns in which the "text" column is my analysis fo
 
 I merged hm_data with the demographic_data. In this way, the whole file contains all the information about happy moments regarding age, gender, marital status and parenthood. The inner join process is by wid that each moment is paried by the recorders. Then, we could focus on our interest groups (gender, marital, parenthhood, age)
 ```{r text processing in tm, warning=FALSE}
-# We clean the text by converting all the letters to the lower case, and removing punctuation, numbers, empty words and extra white space.
+# I clean the text by converting all the letters to the lower case, and removing punctuation, numbers, empty words and extra white space.
 corpus <- VCorpus(VectorSource(hm_data$cleaned_hm))%>%
   tm_map(content_transformer(tolower))%>%
   tm_map(removePunctuation)%>%
@@ -337,7 +337,7 @@ ggplot(data=hm_data, aes(x=predicted_category,fill = agegroups)) +
 ```
 
 ### Conclusion
-The EDA of the happyDB just scratches the surface of people's happy moments. A lot of interesting patterns are found in this dataset. Since the survey sample size is around 10000 in which some of the groups such as 0~20 age group, 60+ age group, divorced group, separated group and widowed group do not contain a large enough size, the inference in these small sample-size groups need to be further varified and researched. More detailed information and interesting facets are also encouraged to explore.
+The EDA of the happyDB just scratches the surface of people's happy moments. A lot of interesting patterns are found in this dataset. Since the survey sample size is around 100000 in which some of the groups such as 0~20 age group, 60+ age group, divorced group, separated group and widowed group do not contain a large enough size, the inference in these small sample-size groups need to be further varified and researched. More detailed information and interesting facets are also encouraged to explore.
 
 Lastly, I also find some moments are worth reading especially about "Boss" and "someone". I listed several of them below.
 
